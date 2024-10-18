@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Dividend Companies</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { color: #333; }
+        #dividend-table { width: 100%; border-collapse: collapse; }
+        #dividend-table th, #dividend-table td { border: 1px solid #ddd; padding: 8px; }
+        #dividend-table th { background-color: #f2f2f2; color: #333; }
+        #dividend-table tr:nth-child(even) { background-color: #f9f9f9; }
+        #dividend-table tr:hover { background-color: #f5f5f5; }
+    </style>
+</head>
+<body>
+    <h1>Top Dividend Companies</h1>
+    <table id="dividend-table" class="display">
+        <thead>
+            <tr>
+                <th>代码</th>
+                <th>名称</th>
+                <th>上市日期</th>
+                <th>最新价</th>
+                <th>累计股息</th>
+                <th>年均股息</th>
+                <th>分红次数</th>
+                <th>融资总额</th>
+                <th>融资次数</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- 表格数据将通过 Python 脚本动态生成 -->
+        </tbody>
+    </table>
+
+    <script>
+        $(document).ready(function() {
+            $('#dividend-table').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.24/i18n/Chinese.json"
+                },
+                "pageLength": 50,
+                "order": [[3, "desc"]], // 默认按累计股息降序排列
+                "columnDefs": [
+                    { "type": "num", "targets": [3, 4, 5, 6, 7] },
+                    { "type": "date", "targets": 2 }
+                ]
+            });
+        });
+    </script>
+</body>
+</html>
